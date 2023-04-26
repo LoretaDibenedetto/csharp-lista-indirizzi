@@ -27,12 +27,12 @@ while (!file.EndOfStream)
     //aumenta il contatore
     countRow++;
 
-   // se il contatore delle righe lette e' maggiore di 0
+   // se il contatore delle righe lette e' maggiore di 1
     if (countRow > 1)
     {
             string[] arraySeparatedInfo = line.Split(',');
 
-        //se l'array length e' diverso da 6 
+        //se l'array length (lunghezza array) e' diverso da 6 
 
        if (arraySeparatedInfo.Length != 6)
         {
@@ -41,14 +41,14 @@ while (!file.EndOfStream)
            
               
         }//altrimenti
-       else if (arraySeparatedInfo.Length > 0)
+       else 
         {
-           // int zipParse = int.Parse(arraySeparatedInfo[5]);
+            int zipParse = int.Parse(arraySeparatedInfo[5]);
            //prova a
             try
             {   
                 //creare oggetto
-                Address newAddress = new Address(arraySeparatedInfo[0], arraySeparatedInfo[1], arraySeparatedInfo[2], arraySeparatedInfo[3], arraySeparatedInfo[4], arraySeparatedInfo[5]);
+                Address newAddress = new Address(arraySeparatedInfo[0], arraySeparatedInfo[1], arraySeparatedInfo[2], arraySeparatedInfo[3], arraySeparatedInfo[4], zipParse);
                
                 //agg oggetto alla lista
                 listAddress.Add(newAddress);    
@@ -70,7 +70,7 @@ while (!file.EndOfStream)
 { 
     Console.WriteLine(ex.Message); 
 }
-
+//stampa lista 
 foreach(Address totaddres in listAddress)
 {
     Console.WriteLine(totaddres);

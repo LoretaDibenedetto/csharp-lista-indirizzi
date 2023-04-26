@@ -8,10 +8,10 @@ namespace csharpListaIndirizzi{
        private string street;
        private string city;
        private string province;
-       private string ZIP;
+       private int ZIP;
 
 
-       public Address(string name, string surname, string street, string city, string province, string ZIP)
+       public Address(string name, string surname, string street, string city, string province, int ZIP)
         {
             this.name = name;
             this.surname = surname;
@@ -42,7 +42,7 @@ namespace csharpListaIndirizzi{
         {
             return province;
         }
-        public string GetZIP()
+        public int GetZIP()
         {
             return ZIP;
         }
