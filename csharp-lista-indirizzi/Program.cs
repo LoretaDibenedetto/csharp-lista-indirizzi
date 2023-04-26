@@ -7,6 +7,11 @@ using System.Runtime.CompilerServices;
 
 //lista di libri vuota
 List<Address> listAddress = new List<Address>();
+
+
+//prova a...
+try { 
+
 //apro file di testo
 StreamReader file = File.OpenText("C:\\Users\\Elle\\source\\repos\\csharp-lista-indirizzi\\csharp-lista-indirizzi\\addresses.csv");
 
@@ -26,23 +31,32 @@ while (!file.EndOfStream)
     if (countRow > 1)
     {
             string[] arraySeparatedInfo = line.Split(',');
-        //se l'array length e' diverso da 4 
-        if (arraySeparatedInfo.Length != 6)
+
+        //se l'array length e' diverso da 6 
+
+       if (arraySeparatedInfo.Length != 6)
         {
             //stampa l'errore
             Console.WriteLine("La riga " + countRow + " non rispetta lo standard richiesto di 6 info per riga");
-            //Address newAddress = new Address(arraySeparatedInfo[0], arraySeparatedInfo[1], arraySeparatedInfo[2], arraySeparatedInfo[3], arraySeparatedInfo[4], arraySeparatedInfo[5]);
-            //listAddress.Add(newAddress);    
-        }
-        else
+           
+              
+        }//altrimenti
+       else if (arraySeparatedInfo.Length > 0)
         {
-            int zipParse = int.Parse(arraySeparatedInfo[5]);
+           // int zipParse = int.Parse(arraySeparatedInfo[5]);
+           //prova a
             try
-            {
+            {   
+                //creare oggetto
                 Address newAddress = new Address(arraySeparatedInfo[0], arraySeparatedInfo[1], arraySeparatedInfo[2], arraySeparatedInfo[3], arraySeparatedInfo[4], arraySeparatedInfo[5]);
+               
+                //agg oggetto alla lista
                 listAddress.Add(newAddress);    
+
+             
             }catch(ArgumentException e)
             {
+                Console.WriteLine("errore nella riga n*" + countRow);
                 Console.WriteLine("l'errore e': " + e.Message);
             }
         }
@@ -50,6 +64,11 @@ while (!file.EndOfStream)
 
    // Console.WriteLine(line);
     
+}//se qualcosa va storto
+}catch (Exception ex ) 
+
+{ 
+    Console.WriteLine(ex.Message); 
 }
 
 foreach(Address totaddres in listAddress)
